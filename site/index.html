@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vtuber -- log analysis</title>
+        <script src="/index.js"></script>
+        <style type="text/css">
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            body {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-areas: "search results";
+            }
+
+            div.search > table {
+                width: 100%;
+            }
+
+            /* div.search {
+                background-color: aqua;
+            } */
+
+            div.results {
+                font-family: monospace;
+            }
+            
+            @media screen and (max-width: 640px) {
+                body {
+                    display: block;
+                }
+            }
+
+            @media print {
+                body {
+                    display: block;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="search">
+            <h2>Search information</h2>
+            <form id="searchinfo" onsubmit="search(event)">
+                <input type="submit" value="Search"></input>
+            </form>
+            <h3>Filters</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="filters">
+                    <tr><td colspan="3"><button onclick="newField('filters')">Add row</button></td></tr>
+                </tbody>
+            </table>
+            <h3>Searches</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="searches">
+                    <tr><td colspan="3"><button onclick="newField('searches')">Add row</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="results">
+            <table id="resultlisting">
+            </table>
+        </div>
+    </body>
+</html>
