@@ -161,8 +161,7 @@ func main() {
 		jsons <- json
 	}
 
-	// http.Handle("/", http.FileServer(http.FS(site)))
-	http.Handle("/", http.FileServer(http.Dir("./site")))
+	http.Handle("/", http.FileServer(http.FS(site)))
 
 	http.HandleFunc("/api/hello", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Hello, world!")
